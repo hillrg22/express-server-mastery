@@ -31,7 +31,29 @@ router.post('/', (req, res, next)=>{
     res.json({cake:cakes[cakes.length-1]})
 })
 
+router.put('/:id', (req,res,next)=>{
+  const body = req.body
+  const id = req.params.id
 
+  console.log("id",id,"body", body)
+
+  const updatedCakes = cakes.map(cake =>{
+    if(cake.id == id){
+      return body
+    }
+    return cake
+  })
+  console.log("updatedCakes",updatedCakes)
+  const newCake = updatedCakes.filter(cake => {
+      return cake.id == id
+  })
+  console.log(newCake)
+  if(newCake.length){
+      res.json({cake:newCake[0]})
+
+  }
+  next()
+})
 
 
 module.exports = router

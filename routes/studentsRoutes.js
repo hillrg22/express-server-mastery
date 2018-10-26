@@ -29,6 +29,25 @@ router.post('/', (req, res, next)=>{
     res.json({student:students[students.length-1]})
 })
 
+router.put('/:id', (req,res,next)=>{
+  const body = req.body
+  const id = req.params.id
+
+  const updatedStudents = students.map(student =>{
+    if(student.id == id){
+      return body
+    }
+    return student
+  })
+  const newStudent = updatedStudents.filter(student => {
+      return student.id == id
+  })
+  if(newStudent.length){
+      res.json({student:newStudent[0]})
+
+  }
+  next()
+})
 
 
 module.exports = router
