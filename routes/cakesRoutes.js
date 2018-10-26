@@ -21,7 +21,7 @@ router.get('/:id', (req,res,next) => {
 
     }
     next()
-    console.log("cake at index 0",cake[0], "cake", cake)
+
 
 })
 
