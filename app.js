@@ -31,7 +31,7 @@ app.use(errorHandler)
 function notFound(req, res, next) {
     res.status(404).send({ error: 'Not found!', status: 404, url: req.originalUrl })
 }
-  
+
 // eslint-disable-next-line
 function errorHandler(err, req, res, next) {
     console.error('ERROR', err)
@@ -42,9 +42,9 @@ function errorHandler(err, req, res, next) {
       stack,
       url: req.originalURL
     })
-  
+
     res.status(500).send({ error: err.message, stack, url: req.originalUrl })
   }
-  
+
 
 app.listen(port, () => console.log(`Server running on ${port}`))

@@ -15,12 +15,14 @@ router.get('/:id', (req,res,next) => {
     const cake = cakes.filter(cake => {
         return cake.id == id
     })
-    console.log('cake variable length', cake.length)
-    if(!cake.length){
-        next()
-    }
 
-    res.json({cake:cake[0]})
+    if(cake.length){
+        res.json({cake:cake[0]})
+
+    }
+    next()
+    console.log("cake at index 0",cake[0], "cake", cake)
+
 })
 
 
