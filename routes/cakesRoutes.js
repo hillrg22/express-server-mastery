@@ -27,7 +27,8 @@ router.get('/:id', (req,res,next) => {
 router.post('/', (req, res, next)=>{
     const body = req.body
     cakes.push(body)
-    res.json({cakes:cakes})
+
+    res.json({cake:cakes[cakes.length-1]})
 })
 
 

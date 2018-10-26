@@ -24,10 +24,9 @@ router.get('/:id', (req,res,next) => {
 
 router.post('/', (req, res, next)=>{
     const body = req.body
-    console.log*(body)
-
     students.push(body)
-    res.json({students:students})
+
+    res.json({student:students[students.length-1]})
 })
 
 
