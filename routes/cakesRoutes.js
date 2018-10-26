@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const cakes = require('../cakes.json')
+let cakes = require('../cakes.json')
 
 // grabs data from JSON package
 router.get('/', (req,res) => {
@@ -32,29 +32,44 @@ router.post('/', (req, res, next)=>{
 })
 
 router.put('/:id', (req,res,next)=>{
-  const body = req.body
-  const id = req.params.id
+    const body = req.body
+    const id = req.params.id
 
-  console.log("id",id,"body", body)
+    console.log("id",id,"body", body)
 
-  const updatedCakes = cakes.map(cake =>{
-    if(cake.id == id){
-      return body
+    const updatedCakes = cakes.map(cake =>{
+        if(cake.id == id){
+        return body
+        }
+        return cake
+    })
+    console.log("updatedCakes",updatedCakes)
+    const newCake = updatedCakes.filter(cake => {
+        return cake.id == id
+    })
+    console.log(newCake)
+    if(newCake.length){
+        res.json({cake:newCake[0]})
+
     }
-    return cake
-  })
-  console.log("updatedCakes",updatedCakes)
-  const newCake = updatedCakes.filter(cake => {
-      return cake.id == id
-  })
-  console.log(newCake)
-  if(newCake.length){
-      res.json({cake:newCake[0]})
-
-  }
-  next()
+    next()
 })
-//dogs rule
+
+router.delete('/:id',(req, res) =>{
+    const id = req.params.id
+
+    const deleted = cakes.filter(cake => {
+        return cake.id == id
+    })
+
+    const cakeSurvivors = cakes.filter(cake => {
+        return cake.id != id
+    })
+
+    cakes = cakeSurvivors
+
+    res.json({deleted:deleted})
+})
 
 
 
