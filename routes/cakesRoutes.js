@@ -22,8 +22,15 @@ router.get('/:id', (req,res,next) => {
     }
     next()
     console.log("cake at index 0",cake[0], "cake", cake)
-
 })
+
+router.post('/', (req, res, next)=>{
+    const body = req.body
+    cakes.push(body)
+    res.json({cakes:cakes})
+})
+
+
 
 
 module.exports = router
