@@ -1,3 +1,7 @@
+## Deployed
+
+[deployed link](https://desolate-lowlands-30395.herokuapp.com/)
+
 # Express: Servers & CRUD Pairing
 
 Today you will be working together with someone else in your cohort to produce an Express server with full CRUD functionality for 2 collections of resources. Your goal is to complete this by the end of the day, but if you do not finish that is ok (you can work it out with your partner to finish over the weekend or next week).
@@ -110,6 +114,4 @@ And
 
 ## HAVE FUN!!!
 
-## Deployed
 
-[deployed link](https://desolate-lowlands-30395.herokuapp.com/)
